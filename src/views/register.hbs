@@ -1,0 +1,32 @@
+
+  <main>
+    <h1>Sign up</h1>
+    <h2>{{message}}</h2>
+    <div>
+      <form method="post" action="/register" accept-charset="utf-8" max length="1000">
+        <label class="form-block" >
+        <input type="text" name="firstName" placeholder="First Name"/>
+        <br />
+        <input type="text" name="lastName" placeholder="Last Name"/>
+        </label>
+        <input type="email" name="email" placeholder="Email" required />
+        <br />
+        <input type="text" name="username" placeholder="Username" required />
+        <br />
+        <input type="password" name="password" placeholder="Choose a Password" required />
+        <br />
+        <input type="text" name="geekName" placeholder="Boardgame Geek Id"  />
+        <br />
+        <!-- <input type="password" name="password_confirmation" placeholder="Confirm Password" required /> -->
+        <!-- <br /> -->
+
+        <input type="radio" name="contact" value="true"><h1>Yes</h1><br />
+        <input type="radio" name="contact" value="false"><h1>No</h1><br />
+        <button>Sign Up</button>
+        <br />
+         Already have an account? <a href="/">Log In</a>
+      </form>
+    </div>
+    </div>
+  </main>
+
