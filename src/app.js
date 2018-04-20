@@ -36,6 +36,7 @@ require('./config/db');
 
 var server = app.listen(3000, function() {
   console.log( "Server listening at: " + server.address().port);
+  console.log("Your __dirname: ");
   console.log(__dirname);
 });
 
@@ -43,7 +44,7 @@ var server = app.listen(3000, function() {
 //Mount middleware
 app.use('/games/?', require('./controllers/games'));
 app.use('/users/?', require('./controllers/users'));
-
+app.use('/ratings/?', require('./controllers/ratings'));
 app.use(require('./controllers/home'));
 
 

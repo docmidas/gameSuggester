@@ -18,7 +18,7 @@ Games.route('/json/?')
 Games.route('/?')
 .get(function(req, res) {
   Game.find(function(err, games) { //Find ALL things within database
-    res.render('home', {games: games});
+    res.render('home', {games: games, message: "#: " + games.length});
     //res.send("Getting games");
   });
 })
@@ -50,7 +50,7 @@ Games.route('/?')
     }
     return res.send("successfully saved");
     //console.log(res.headers);
-    //res.end();// DEXX, is this necessary?
+    res.end();// DEXX, is this necessary?
   })
 })
 .delete(function(req, res, next) {
@@ -70,27 +70,27 @@ Games.route('/?')
 })
 .patch(function(req, res) {
    ///////FOR LOADING TEST / SEED ENTRIES 
-  var testEntries = [
-    {                    
-      geekId: 
-      name: 
-      minPlyr: 
-      maxPlyr: 
-      minTime: 
-      maxTime: 
-      yearPub: 
-      imgUrl: 
-      description: 
-      rank: 
-      weight: 
-      mechanics: 
-      categories: 
-      designers: 
-      artists: 
-      publishers: 
-      families: 
-    }
-  ];
+  // var testEntries = [
+  //   {                    
+  //     geekId: 
+  //     name: 
+  //     minPlyr: 
+  //     maxPlyr: 
+  //     minTime: 
+  //     maxTime: 
+  //     yearPub: 
+  //     imgUrl: 
+  //     description: 
+  //     rank: 
+  //     weight: 
+  //     mechanics: 
+  //     categories: 
+  //     designers: 
+  //     artists: 
+  //     publishers: 
+  //     families: 
+  //   }
+  // ];
   Game.create(testEntries, function(err, games) {
     //console.log(games);
     //res.json(games);
