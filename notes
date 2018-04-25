@@ -1,0 +1,27 @@
+use users controller even for register
+cosider using session controller to handle sessions:
+-POST/sessions
+-DEL /sessions
+
+
+ESTIMATE practice!!
+??run mongo in backgground
+implement version control: {expected: .5, 
+                            actual: .5, github BS}
+indentation cleanup: 1
+add ratings as model: 1
+
+app.js: get rid of salt secret: 
+started skipping game entries, during posting!! why????
+
+.emd to keep things secret
+referencing, not populating or inheriting
+body vs params
+1 line of whitespace between routes and verbs
+
+
+.emd
+'login', not 'sessioning'
+front end for a user to create ratings
+stretch add library
+

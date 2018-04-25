@@ -1,18 +1,21 @@
 //RATING MODEL
 var mongoose = require('mongoose');
+// var Schema =  mongoose.Schema;
 // var User            = require(__dirname + '/../models/user'),
 // var Game            = require(__dirname + '/../models/game');
 ////////
 //Constructor function
-var RatingSchema = new mongoose.Schema({
-  score: Number,
+var ItemSchema = new mongoose.Schema({
+  rating: Number,
+  status: String,
   dateCreated: {type: Date, default: Date.now},
   isDeleted: {type: Boolean, default: false},
   userId: String,
-  geekId: Number  
+  geekId: Number
 //////////Advanced populating?
-  // _creator: {type: Schema.ObjectId, ref: 'User'},
-  // _game: {type: Schema.ObjectId, ref: 'Game'}
+  //_creator: {type: Schema.Types.ObjectId, ref: 'User'}
+  // _game: {type: Schema.Types.ObjectId, ref: 'Game'}
 });
 /////////
-module.exports = mongoose.model('Rating', RatingSchema);
+module.exports = mongoose.model('Item', ItemSchema);
+

@@ -44,7 +44,7 @@ var server = app.listen(3000, function() {
 //Mount middleware
 app.use('/games/?', require('./controllers/games'));
 app.use('/users/?', require('./controllers/users'));
-app.use('/ratings/?', require('./controllers/ratings'));
+app.use('/items/?', require('./controllers/items'));
 app.use(require('./controllers/home'));
 
 
