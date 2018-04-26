@@ -20,7 +20,7 @@ body vs params
 1 line of whitespace between routes and verbs
 
 
-.emd
+dot env
 'login', not 'sessioning'
 front end for a user to create ratings
 stretch add library

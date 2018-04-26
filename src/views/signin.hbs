@@ -1,0 +1,24 @@
+{{message}}
+<!-- {{#unless isLoggedIn}} -->
+<h1>Welcome, log in!</h1>
+
+
+
+
+<form action="/users/signin" accept-charset="utf-8" method="post" >
+   <label class="form-block">
+      <input type="text" name="username" placeholder="Username" size="50" required />
+   <label>
+   <br />
+   <label class="form-block">
+      <input type="password" name="password" placeholder="Password" size="50" required /> 
+   </label>
+   <br />
+  <button>Log in</button>
+  <br />
+</form>
+
+Dont have an account?<a href="/users/register">Sign Up</a>
+<!-- {{/unless}} -->
+
+

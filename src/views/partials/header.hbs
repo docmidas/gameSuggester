@@ -4,35 +4,22 @@
   <title>{{pageTitle}}</title>
   <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="apple-touch-icon" sizes="57x57" href="http://localhost:3000/favicon/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:3000/favicon/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:3000/favicon/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:3000/favicon/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:3000/favicon/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:3000/favicon/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:3000/favicon/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:3000/favicon/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:3000/favicon/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="http://localhost:3000/favicon/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:3000/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="http://localhost:3000/favicon/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:3000/favicon/favicon-16x16.png">
-<link rel="manifest" href="http://localhost:3000/favicon/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
+
 <script type="text/javascript" src="../js/pulses.js"></script>
 </head>
-<body>
+<body>    
 
- <!--  <img class="circuit" src="../images/circ_gal.jpg">
-    <img id="screen" src="../images/black_matte.jpg"> -->
-     
-
-        <ul class="nav">
-        <a href="http://localhost:3000/home"><img class="home" src="../images/home.png" /></a>
-          <a href="#"><li>Board Games</li></a>        
-          <a href="games/json"><li>JSON</li></a>
-          <a href="#"><li>Placeholder3</li></a>
-          <a href="#"><li>Placeholder4</li></a>      
-        </ul> 
+  <ul class="nav">
+    <a href="http://localhost:3000/home"><img class="home" src="../images/home.png" /></a>
+    {{#if isLoggedIn}}
+    <a href="users/signout"><li>SIGN OUT</li></a>       
+    {{/if}}
+    {{^if isLoggedIn}}
+    <a href="/users/signin"><li>SIGN IN</li></a>       
+    {{/if}}
+    <a href="#"><li>Board Games</li></a>        
+    <a href="/games/json"><li>JSON</li></a>
+    
+    <a href="#"><li>Placeholder3</li></a>
+    <a href="#"><li>Placeholder4</li></a>
+  </ul> 

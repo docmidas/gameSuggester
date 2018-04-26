@@ -2,7 +2,8 @@ var express   = require('express'),
     Items  = express.Router(),
     fs        = require('fs'),
     mongoose  = require('mongoose'),
-    Item   = require('../models/item');   
+    Item   = require('../models/item'),
+    Game   = require('../models/game');  
    
 // var User   = require('../models/user'),
 //     Game   = require('../models/game');
@@ -10,6 +11,21 @@ var express   = require('express'),
   
 ///////////
 ////
+Items.route('/rate/?')
+.get(function(req, res) {
+  //console.log(req);
+  var message = "couldnt find user";
+  Item.find({user: req.session.userId}).
+  populate('user').
+  populate('game').
+  exec(function (err,items){
+    
+    res.render('rate', {items: items, message: req.session.userId ? req.session.userId : message });
+
+  });
+});
+
+
 Items.route('/json/?')
 .get(function(req, res) {
   //console.log(req);
@@ -38,20 +54,27 @@ Items.route('/?')
   });
 })
 
-  ///////FOR ADDING THINGS
+  ///////FOR ADDING item
 .post(function(req, res) {
-  var entry = {
-    geekId: req.body.geekId,
-    userId: req.body.userId,
-    score: req.body.score,
-    status: req.body.status
-  };
-  Item.findOneAndUpdate({geekId: req.body.geekId, userId: req.body.userId}, entry, {upsert:true},function(err, doc) {
+  ///find game in local DB first. need it to get game._id
+  Game.findOne({geekId: req.body.geekId}, function (err, game) {
+    console.log("Rating: " + game.name);
+    var entry = {
+      geekId: req.body.geekId,
+      userId: req.session.userId,
+      score: req.body.score,
+      status: req.body.status,
+      user: req.session.userId,
+      game: game._id
+    };
+    ///then post rating if unique
+    Item.findOneAndUpdate({geekId: req.body.geekId, userId: req.session.userId}, entry, {upsert:true},function(err, doc) {
     if(err){
       return res.status(500).send({error: err});
     }
-    return res.send("successfully saved");
-  })
+    return res.redirect("/items/rate");
+    })
+  })  
 })
 
 .delete(function(req, res, next) {

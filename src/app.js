@@ -45,7 +45,7 @@ var server = app.listen(3000, function() {
 app.use('/games/?', require('./controllers/games'));
 app.use('/users/?', require('./controllers/users'));
 app.use('/items/?', require('./controllers/items'));
-app.use(require('./controllers/home'));
+// app.use(require('./controllers/home'));
 
 
 

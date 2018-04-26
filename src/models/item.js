@@ -1,6 +1,6 @@
 //RATING MODEL
 var mongoose = require('mongoose');
-// var Schema =  mongoose.Schema;
+var Schema =  mongoose.Schema;
 // var User            = require(__dirname + '/../models/user'),
 // var Game            = require(__dirname + '/../models/game');
 ////////
@@ -11,7 +11,9 @@ var ItemSchema = new mongoose.Schema({
   dateCreated: {type: Date, default: Date.now},
   isDeleted: {type: Boolean, default: false},
   userId: String,
-  geekId: Number
+  geekId: Number,
+  user: {type: Schema.Types.ObjectId, ref: 'User'},
+  game: {type: Schema.Types.ObjectId, ref: 'Game'}
 //////////Advanced populating?
   //_creator: {type: Schema.Types.ObjectId, ref: 'User'}
   // _game: {type: Schema.Types.ObjectId, ref: 'Game'}
