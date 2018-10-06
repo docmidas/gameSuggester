@@ -1,0 +1,60 @@
+
+  <main>
+    <h1>Search Results</h1>  
+    <h2>{{message}}</h2>
+    <div>
+      <form method="post" action="/item/" accept-charset="utf-8" max length="1000">
+        <label class="form-block" >
+   
+        <input type="text" name="_id" placeholder="DB id"/ required>
+        </label>
+        <input type="number" name="rating" placeholder="Rating" required />
+        <input type="text" name="status" placeholder="Status">
+
+        <button>Rate</button>
+        
+      </form>
+    </div>
+    </div>
+
+     <div class="row row-eq-height">    
+      
+    {{#each items}}
+
+      <div class="col-6">
+        <h2 class="center">{{name}}</h2>
+        <div class="item_container">
+          <img class="lone_pic" src="{{imgUrl}}" />
+          <div class='see_more'>
+            <a href="https://boardgamegeek.com/boardgame/{{geekId}}" class=""> See more...</a>
+          </div>
+
+          <ul class="rightList">
+            <!-- <li>user: {{user}}</li> -->
+          
+            <li>item_id: {{_id}}</li>
+            <br />
+            <li>Rank: {{rank}}</li>
+            <li>Designers: {{designers}}</li>
+            <li>Artists: {{artists}}</li>
+            <li>Minimum Players: {{minPlyr}}</li>
+            <li>Max Players: {{maxPlyr}}</li>
+            <li>Min PLay time: {{minTime}}</li>
+
+            
+            <!-- <li>Max PLaytime: {{maxTime}}</li>
+            <li>Year: {{yearPub}}</li>
+            <li>Difficulty: {{weight}}</li>
+            <li>Mechanisms: {{mechanics}}</li> -->
+  <!--            <li>Categories: {{categories}}</li>
+            <li>Families: {{families}}</li>
+            <li>Deleted: {{isDeleted}}</li> -->
+          </ul>      
+        </div>                
+      </div>
+    {{/each}}  
+  </div>
+
+
+  </main>
+

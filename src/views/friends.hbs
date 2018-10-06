@@ -1,0 +1,49 @@
+
+
+ <div class="row">
+  <div class="col-8 intro">
+    <h1>{{username}}'s Friends</h1>
+    <p>{{message}}</p>
+
+  </div>
+ </div>
+
+<div class="row">
+  <form method="post" action="/user/search/" accept-charset="utf-8" max length="1000">
+    <label class="form-block" >
+
+    <input type="text" name="username" placeholder="username"/ required>
+    </label>
+    
+    
+    <button>Search</button>
+    
+  </form>
+</div>
+
+  <div class="row row-eq-height">    
+      
+    {{#each friends}}
+
+      <div class="col-md-2">
+        <div class="container">
+          <img class="lone_pic" src="https://cdn0.iconfinder.com/data/icons/avatars-6/500/Avatar_boy_man_people_account_client_male_person_user_work_sport_beard_team_glasses-512.png" />
+          <p>{{friendee.username}}</p>
+          <div class='overlay'>
+            <form method="post" action="/friend/" accept-charset="utf-8" max length="1000">
+                <label class="form-block" >
+              <a href="https://boardgamegeek.com/boardgame/{{game.geekId}}" class=""> {{friender.username}}</a>
+              
+              <input type="text" name="status"  value={{this.status}}>
+              <input type="text" name="username" placeholder={{friendee.username}} value={{friendee.username}} required hidden>
+
+
+              <button>Update</button>
+            </form>
+          </div>            
+        </div>        
+        <img class="shelf" src="/images/shelf3.png" />              
+      </div>
+
+    {{/each}}  
+  </div>

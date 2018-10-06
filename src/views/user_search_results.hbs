@@ -1,0 +1,54 @@
+
+  <main>
+    <h1>User Search</h1>  
+    <h2>{{message}}</h2>
+    <div>      
+      <form method="post" action="/user/search/" accept-charset="utf-8" max length="1000">
+        <label class="form-block" >   
+        <input type="text" name="username" placeholder="username" required>
+        <button>Search</button>      
+      </form>
+    </div>       
+    
+ 
+      <div class="row row-eq-height">    
+      
+    {{#each users}}
+
+      <div class="col-md-2">
+        <div class="item_container">
+          <div class=''>
+           <img class="lone_pic" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIzZE4_XbwIgUQRaxqN-UruAIxCwW2WXlPhKIQKgUNU2jhnYUv" /> 
+
+
+            <a href="/user/search/{{username}}/" class="">{{username}}</a>
+
+            <form method="post" action="/friend/" accept-charset="utf-8" max length="1000">
+              <label class="form-block" >
+              
+              <input type="text" name="username" value="{{username}}" hidden>          
+              
+              <button>Add friend</button>
+            
+            </form>
+          </div>  
+
+        </div>        
+        <img class="shelf" src="/images/shelf3.png" />              
+      </div>
+
+    {{/each}}  
+  </div>
+    
+      
+           
+
+       
+      
+    
+    
+      
+  
+
+
+  </main>

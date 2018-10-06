@@ -3,23 +3,39 @@
 <head>
   <title>{{pageTitle}}</title>
   <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
 
-<script type="text/javascript" src="../js/pulses.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<script type="text/javascript" src="/js/pulses.js"></script>
 </head>
-<body>    
+<body>
 
   <ul class="nav">
-    <a href="http://localhost:3000/home"><img class="home" src="../images/home.png" /></a>
-    {{#if isLoggedIn}}
-    <a href="users/signout"><li>SIGN OUT</li></a>       
-    {{/if}}
-    {{^if isLoggedIn}}
-    <a href="/users/signin"><li>SIGN IN</li></a>       
-    {{/if}}
-    <a href="#"><li>Board Games</li></a>        
-    <a href="/games/json"><li>JSON</li></a>
+    <a href="http://localhost:3000/home"><img class="home" src="/images/home.png" /></a>
     
-    <a href="#"><li>Placeholder3</li></a>
-    <a href="#"><li>Placeholder4</li></a>
+    <li>
+      <form method="post" action="/game/search/" accept-charset="utf-8" max length="1000">
+        <label class="form-block" >
+   
+        <input type="text" name="gameName" placeholder="Game name">
+
+        <button>Search</button>
+        
+      </form>
+    </li>
+    <a href="/item/rate"><li>Library</li></a>        
+    <a href="/game/json"><li>JSON</li></a>
+    
+    <a href="/user/search"><li>User Search</li></a>
+    <a href="/friend/"><li>Friends</li></a>
+
+    {{#if userId}}
+    <a href="/account/signout/"><li>SIGN OUT</li></a>
+    {{else}}
+    <a href="/account/signin/"><li>SIGN IN</li></a>
+    {{/if}}
   </ul> 

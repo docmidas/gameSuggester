@@ -5,6 +5,7 @@ var express   = require('express'),
     fs        = require('fs'),
     bodyParser = require('body-parser'),
     session     = require('express-session');
+require('dotenv').config();    
 
 ///SET VIEW ENGINE
 app.engine('hbs', exphbs({
@@ -26,7 +27,7 @@ app.use(session({
   name: 'sessionclass',
   resave: false,
   saveUninitialized: false,
-  secret: 'xw4gfqgV89qjarqDzF8pCje9'
+  secret: process.env.SESSION_SECRET
 }));
 
 //////////////////////////
@@ -42,9 +43,25 @@ var server = app.listen(3000, function() {
 
 
 //Mount middleware
-app.use('/games/?', require('./controllers/games'));
-app.use('/users/?', require('./controllers/users'));
-app.use('/items/?', require('./controllers/items'));
+app.use('/account/?', require('./controllers/accounts'));
+
+// app.use('/?', function(req, res, next) {
+//   if (req.session.userId) {
+//     next();
+//   } else {
+//     //res.redirect('/');
+//     var message = "Please LOG IN to use this feature";
+//     res.render('signin', {message: message});
+//   }
+// });
+
+
+app.use('/user/?', require('./controllers/users'));
+app.use('/game/?', require('./controllers/games'));
+
+app.use('/item/?', require('./controllers/items'));
+app.use('/friend/?', require('./controllers/friends'));
+
 // app.use(require('./controllers/home'));
 
 

@@ -2,9 +2,8 @@
 
  <div class="row">
   <div class="col-8 intro">
-    <h1>Ay {{}}! You like games?</h1>
-    <p>{{message}}
-    </p>
+    <h1>{{username}}'s Library</h1>
+    <p>{{message}}</p>
 
   </div>
  </div>
@@ -12,19 +11,19 @@
 
   <div class="row row-eq-height">    
       
-    {{#each games}}
+    {{#each items}}
 
       <div class="col-6">
-        <h2 class="center">{{name}}</h2>
+        <h2 class="center">{{item.game.name}}</h2>
         <div class="item_container">
-          <img class="lone_pic" src="{{this.imgUrl}}" />
+          <img class="lone_pic" src="{{this.game.imgUrl}}" />
           <div class='see_more'>
             <a href="https://boardgamegeek.com/boardgame/{{geekId}}" class=""> See more...</a>
           </div>
 
           <ul class="rightList">
             <li>_id: {{_id}}</li>
-            <li>Designers: {{designers}}</li>
+            <li>DesignersZ: {{items.game.designers}}</li>
             <li>Artists: {{artists}}</li>
             <li>Minimum Players: {{minPlyr}}</li>
             <li>Max Players: {{maxPlyr}}</li>

@@ -1,0 +1,43 @@
+
+  <main>
+    <h1>{{username}}'s Collection</h1>
+    <h2>Rate a Game</h2>   
+    <h2>{{message}}</h2>
+    <div>
+      <form method="post" action="/item/" accept-charset="utf-8" max length="1000">
+        <label class="form-block" >
+   
+        <input type="text" name="_id" placeholder="DB id"/ required>
+        </label>
+        <input type="number" name="rating" placeholder="Rating" required />
+        <input type="text" name="status" placeholder="Status">
+
+        <button>Rate</button>
+        
+      </form>
+    </div>
+    </div>
+
+     <div class="row row-eq-height">    
+      
+    {{#each items}}
+
+      <div class="col-sm">
+        <!-- <h2 class="center">{{game.name}}</h2> -->
+        <div class="item_container">
+          <img class="lone_pic" src="{{game.imgUrl}}" />
+          <div class='see_more'>
+            <a href="https://boardgamegeek.com/boardgame/{{game.geekId}}" class=""> See more...</a>
+            <input type="number" name="rating" placeholder="{{this.rating}}" required />
+        <input type="text" name="status" placeholder="{{this.status}}">
+          </div>
+
+            
+        </div>                
+      </div>
+    {{/each}}  
+  </div>
+
+
+  </main>
+

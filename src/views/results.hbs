@@ -1,0 +1,35 @@
+
+  <main>
+    <h1>Search Results: <span id="result_display"></span></h1>  
+    <h2>{{message}}</h2>
+
+    {{>filter_partial}}
+   
+    
+
+<div class="row row-eq-height">    
+      
+    {{#each items}}
+
+      <div class="col-md-2 results" data-minplyr="{{minPlyr}}" data-maxplyr="{{maxPlyr}}" data-mintime="{{minTime}}" data-maxtime="{{maxTime}}" data-mintime="{{minTime}}" data-maxtime="{{maxTime}}" data-categories="{{categories}}" data-mechanics="{{mechanics}}" data-weight="{{weight}}">
+        <div class="container">
+          <img class="lone_pic" src="{{imgUrl}}" />
+          <p>{{name}}</p>
+          <div class='overlay'>
+            <form method="post" action="/item/" accept-charset="utf-8" max length="1000">
+                <label class="form-block" >
+              <a href="https://boardgamegeek.com/boardgame/{{geekId}}" class=""> GEEK LINK</a>
+              
+              <input type="text" name="status"  value={{this.status}}>
+
+              <button>Update</button>
+            </form>
+          </div>            
+        </div>        
+        <img class="shelf" src="/images/shelf3.png" />              
+      </div>
+
+    {{/each}}  
+  </div>
+  </main>
+

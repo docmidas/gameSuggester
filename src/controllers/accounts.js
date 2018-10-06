@@ -1,5 +1,5 @@
 var express   = require('express'),
-    Users  = express.Router(),
+    Accounts  = express.Router(),
     fs        = require('fs'),
     mongoose  = require('mongoose'),
     User   = require('../models/user'),
@@ -9,13 +9,23 @@ var express   = require('express'),
     // var Gift        = require(__dirname + '/../models/gift');
 ///////////
 ////SUCCESFUL LOGIN OR SIGN UP LEADS HERE
-Users.route('/signin/?')
+Accounts.route('/signin/?')
   .get(function(req, res, next) {    
     if(req.session.userId) {
-      res.redirect('/item/rate/');
+      User.findOne({_id: req.session.userId}, function(err, user) { //Find single user
+        if(user){
+          Item.find({userId: user._id}).
+          populate('game').
+          exec(function (err,items){
+            console.log("signing in through BETTER oath!!!!@##@!");
+            res.render('profile', {items: items, username: user.username});
+          });
+        }else{console.log("could not find user");}
+      });
+        //res.redirect('/user/rate/');
     }else{
       res.render('signin');
-      //res.redirect('/user/signin/')
+
     }    
   })
   // Login User
@@ -42,14 +52,13 @@ Users.route('/signin/?')
   });
 ///////////////
 
-Users.route('/signout/?')
+Accounts.route('/signout/?')
 .get(function(req, res, next) {
-  req.session.userId      = null;
-  req.session.username = null;
+  req.session.userId      = false;
   res.redirect("/user/signin/");
 })
 
-Users.route('/register/?')
+Accounts.route('/register/?')
 // GET /
 // -----
 // Serve the homepage
@@ -117,9 +126,9 @@ Users.route('/register/?')
   });      
 });
 //////////==================
-Users.route('/search/?')
+Accounts.route('/search/?')
 .get(function(req, res, next) {    
-  res.render("user_search_results", {userId: req.session.userId});
+  res.render("user_search_results");
 })
 //
 .post(function(req, res, next) {
@@ -129,8 +138,7 @@ Users.route('/search/?')
       users.sort(function(a,b){
             return a.rank - b.rank;
           })
-          res.render('user_search_results', {userId: req.session.userId, users: users, message: "used User controller"});
-          //res.render('rate', {items: items, userId: req.session.userId,  username: items[0].user.username });
+          res.render('user_search_results', {users: users, message: "used User controller"});
     }
     else{
       res.render('user_search_results', {message: "No users by that name"});
@@ -141,7 +149,7 @@ Users.route('/search/?')
 
 
 ////////=======================
-Users.route('/search/:username/?')
+Accounts.route('/search/:username/?')
 .get(function(req, res, next) {  
   var username = req.params.username;
   User.findOne({username: username}, function(err, user) { //Find single user
@@ -154,8 +162,7 @@ Users.route('/search/:username/?')
       exec(function (err,items){
         
         console.log(items);
-        // res.render('profile', {items: items, username: username});
-        res.render('rate', {items: items, username: username});
+        res.render('profile', {items: items, username: username});
       });
     }
     else{
@@ -164,7 +171,7 @@ Users.route('/search/:username/?')
   });     
 });
 
-Users.route('/?')
+Accounts.route('/?')
   // GET /
 .get(function(req, res, next) {
   User.find(function(err, users) { //first thing is Error and second thing is all users within user database
@@ -175,4 +182,4 @@ Users.route('/?')
   });
 })
 
-module.exports = Users;
+module.exports = Accounts;

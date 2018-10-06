@@ -7,12 +7,45 @@ var express   = require('express'),
 ////////////ROUTES
 //////////
 
+
+
+Games.route('/results2/?')
+.get(function(req, res) {
+  res.render('results2');
+  
+});
+
+
 Games.route('/json/?')
 .get(function(req, res) {
   //console.log(req);
   Game.find(function(err, games) { //Find ALL things within database
     res.json(games);
   });
+});
+
+/////
+Games.route('/search/?')
+.post(function(req, res) {
+  console.log("Searching for game: " + req.body.gameName);
+  console.log(req.body);
+
+
+  ///full word match
+  // Game.find({$text: {$search: req.body.gameName}}, function(err, games) { //Find ALL things within database
+  //   // res.json(games);
+  //   res.render('results', {items: games})
+  // });
+
+          ////works for partial word matches!!!
+  Game.find({name: { "$regex": req.body.gameName, "$options": "i" }}, function(err, games) { 
+    // res.json(games);
+    games.sort(function(a,b){
+      return a.rank - b.rank;
+    })
+    res.render('results', {items: games})
+  });
+
 });
 /////root/games/...
 Games.route('/?')

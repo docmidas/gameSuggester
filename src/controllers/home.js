@@ -70,41 +70,6 @@ HomeController.route('/register/?')
         }//end of unique check
       });
     });
- 
-  //console.log("THIS IS THE UNIQUE VAL before unique check: " + unique);
-//
-//   setTimeout(function() {  
-//   if(unique === false){
-//     //console.log(message);
-//     res.render('register', {message: message, isLoggedIn: req.session.isLoggedIn ? true : false}); 
-//   }else{
-//       bcrypt.hash(req.body.password, 10, function(err, hash) {
-//     // Save user inside here
-//     User.create({
-//       username: req.body.username,
-//       password: hash,
-//       email: req.body.email,
-//       firstName: req.body.firstname,
-//       lastName: req.body.lastname,
-//       location: req.bodylocation,
-//       bdaymonth: req.body.bdaymonth,
-//       gender: req.body.gender
-//     }, function(err, user) {
-//       if (err) {
-//         console.log(err);
-//         res.render('home', {error: err, isLoggedIn: req.session.isLoggedIn ? true : false});
-//       } else {
-//         req.session.isLoggedIn  = true;
-//         req.session.userId      = user._id;
-//         //console.log("Session USER ID HAS BEEN SET: " + req.session.userId );
-//         res.redirect('/membersonly/users/myprofile');      
-//       }
-//     });
-//   });
-//   }//end of unique check
-// }, 6000);
-// });
-//////For Heroku 
       
 });
 
@@ -112,12 +77,12 @@ HomeController.route('/register/?')
 ////////=======================
 ////SIGN OUT!!!//
 HomeController.route("/signout/?")
-  .get(function(req, res, next) {
-    req.session.isLoggedIn  = false;
-    req.session.userId      = null;
-    //console.log("SIGNED OUT /n req.session.userId: " + req.session.userId + "/n req.session.isLoggedIn: " + req.session.isLoggedIn);
-    res.redirect("/");
-  });
+.get(function(req, res, next) {
+  req.session.isLoggedIn  = false;
+  req.session.userId      = null;
+  //console.log("SIGNED OUT /n req.session.userId: " + req.session.userId + "/n req.session.isLoggedIn: " + req.session.isLoggedIn);
+  res.redirect("/");
+});
 ////
 ////////=======================
 HomeController.route('/?')

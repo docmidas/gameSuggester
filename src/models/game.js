@@ -24,5 +24,7 @@ var GameSchema = new mongoose.Schema({
   dateUpdated: {type: Date, default: Date.now},
   isDeleted: {type: Boolean, default: false}
 });
+
+GameSchema.index({name:'text'});
 ///////
 module.exports = mongoose.model('Game', GameSchema);

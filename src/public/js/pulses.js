@@ -10,6 +10,7 @@
 // });
 
 
+
 var pulseCounter = 0;
 var silhouette = document.getElementById("screen");
 var opaFactor = .015;
@@ -17,13 +18,13 @@ var opaLevel = 0;
 
 var throbSpeed;
 
-var pageHeight = Math.max(document.body.offsetHeight, 
-                                document.documentElement.clientHeight, document.documentElement.offsetHeight);
+// var pageHeight = Math.max(document.body.offsetHeight, 
+//                                 document.documentElement.clientHeight, document.documentElement.offsetHeight);
 
 function createPulse(pulseFreq) {
     for (var i = 0; i < pulseFreq; i++) {
         var elem = document.createElement('img'); 
-        elem.src = "../images/elec_pulse.png";
+        elem.src = "/images/elec_pulse.png";
         elem.style.position = "absolute";
         elem.style.left = getRandom(window.innerWidth -200) + 'px';
         elem.style.top = getRandom(window.pageHeight -10) + 'px';
@@ -82,17 +83,17 @@ function removeSpark2 () {
     }
 }
 
-window.setInterval(function(){
-    createPulse(8); 
-    moveSparks();
-    removeSpark2();
-}, 300);
+// window.setInterval(function(){
+//     createPulse(8); 
+//     moveSparks();
+//     removeSpark2();
+// }, 300);
 
-window.setInterval(function(){
+// window.setInterval(function(){
 
-    screenThrob();
+//     screenThrob();
 
-    }, 30);
+//     }, 30);
 
 
 function screenThrob() {
